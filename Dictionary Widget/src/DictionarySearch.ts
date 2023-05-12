@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) Robert A. Howell  May, 2023
 import { apiGET } from "./api";
 import { DictionarySearchElements, localstoragewordvalue } from './widgetinterface'
 import DictionarySearchWidget from "./DictionarySearchWidget"

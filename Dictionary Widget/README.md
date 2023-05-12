@@ -41,7 +41,6 @@ wordFetchRequest();
      <span style="color: red">"Failed to fetch, check network connection."</span>  
 
 -------------------
--------------------
 # Project initialization: 
 
 > ```shell
