@@ -1,8 +1,15 @@
 # typescript-widgets
+<<<<<<< HEAD
 <details>
 <summary>Dictionary Widget:</summary>  
 ## Dictionary Widget:  
 
+=======
+
+## Dictionary Widget:  
+
+
+>>>>>>> cfacf8e9c839cb20d364568099f9b6d9eac5f094
 ### Search box word entry and definition retrieval
 
 - Retrieve words from a word dictionary API.
@@ -25,7 +32,14 @@ const wordFetchRequest = async () => {
 };
 wordFetchRequest();
 
+<<<<<<< HEAD
 ```
+=======
+```  
+
+<details>
+<summary>Dictionary Widget:</summary>  
+>>>>>>> cfacf8e9c839cb20d364568099f9b6d9eac5f094
 
 - Cached word entries in **local storage**
 
@@ -47,8 +61,11 @@ wordFetchRequest();
 
 </details>
 
+<<<<<<< HEAD
 <details>
 <summary>To-Do List Widget:</summary>  
+=======
+>>>>>>> cfacf8e9c839cb20d364568099f9b6d9eac5f094
 ## To-Do List Widget:  
 
 ### A todo list in a webpage, from stored entries
@@ -56,6 +73,7 @@ wordFetchRequest();
 - Add to-dos using an input form
 - Delete entries if 'complete' checkbox is entered
 - Store to-dos in browser storage --> re-render on page reload
+<<<<<<< HEAD
 - Exportable widget based on classname
 
 ```HTML
@@ -64,6 +82,8 @@ wordFetchRequest();
 <aside class="ToDoList"></aside>
 ```
 
+=======
+>>>>>>> cfacf8e9c839cb20d364568099f9b6d9eac5f094
 - Cached word entries in **local storage**
 
   > ```TypeScript
@@ -74,6 +94,20 @@ wordFetchRequest();
   > }
   > ```
 
+<<<<<<< HEAD
+=======
+
+<details>
+<summary>To-Do List Widget:</summary>  
+
+- Exportable widget based on classname
+
+```HTML
+<!-- Add widget to aside element -->
+<h1>To Do List Widget (Below)</h1><hr>
+<aside class="ToDoList"></aside>
+
+>>>>>>> cfacf8e9c839cb20d364568099f9b6d9eac5f094
 - Widget is seeded with a default value, never stored in cache
 - Removing an item requires the checkbox
   > ```TypeScript
@@ -90,4 +124,10 @@ wordFetchRequest();
   > }
   > ```
 
+<<<<<<< HEAD
 </details>
+=======
+</details>
+
+
+>>>>>>> cfacf8e9c839cb20d364568099f9b6d9eac5f094
