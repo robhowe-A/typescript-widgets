@@ -39,3 +39,26 @@ wordFetchRequest();
      <span style="color: red">"Invalid word!"</span>  
      <span style="color: yellow">"No Definitions Found"</span>  
      <span style="color: red">"Failed to fetch, check network connection."</span>  
+
+-------------------
+-------------------
+# Project initialization: 
+
+> ```shell
+> #1. Within the project's folder and run the below (4) dependency installations
+> # They install gulp-cli, gulp with typescript, browserify, tsify,
+> # vinyl-source-stream, and watchify  dependencies needed to run
+> # the developer's environment
+> #
+> #Node.JS commands to bring up the development
+> npm install -g gulp-cli
+>
+> npm install --save-dev typescript gulp@4.0.0 gulp-typescript
+>
+> npm install --save-dev browserify tsify vinyl-source-stream
+>
+> npm install --save-dev watchify fancy-log
+>
+> #2. Once they're ready, run the below command to begin
+> gulp
+> ```

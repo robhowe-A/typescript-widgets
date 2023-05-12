@@ -8,7 +8,7 @@ export interface DictionarySearchElements {
     refreshBtn: HTMLButtonElement;
 }
 
-export interface localstoragewordcache {
+export interface localstoragewordvalue {
     inCache: boolean,
     word: string,
     wordURL: URL,
