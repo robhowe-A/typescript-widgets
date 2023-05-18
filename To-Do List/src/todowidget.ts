@@ -1,25 +1,39 @@
 //--Copyright (c) Robert A. Howell  May, 2023
 import { ToDoListElements, localstoragetodocache } from "./todowidgetinterface";
 
+/**
+ * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the
+ *  ToDoList constructor to create widget markup and functionality. To-Dos are
+ *  stored in the browser's local storage and read and rendered when the page loads.
+ * 
+ * To create a ToDoList, an element on the page must have '.ToDoList' class. Call the
+ *  class constructor, passing in that element to create the widget.
+ *
+ *       const todoWidget = new ToDoList();
+ *       todoWidget.createToDoListWidget(elem);
+ * 
+ * Then, the widget is created and To-Dos are retrieved from storage.
+ */
 class ToDoWidget {
     public static todosInLocalStorage: boolean = false;
     public static ToDOs: number = 0;
     private static ToDoElements: ToDoListElements;
 
+    /**
+     * A function to assign todolist elements internal:
+     * 
+     *      ToDoList.ToDoElements = ToDoListElements;
+     * @param ToDoListElements - important Widget Elements.
+     */
     public static setToDoListElements(ToDoListElements: ToDoListElements) {
         ToDoWidget.ToDoElements = ToDoListElements;
     }
-
-    private getToDoListElements() {
-        let ToDoElements: ToDoListElements = {
-            todoTable: (document.querySelector('#ToDO table') as HTMLTableElement),
-            todoTableBody: (document.getElementById('ToDoItems') as HTMLElement),
-            addButton: (document.getElementById('AddButton') as HTMLElement),
-            addItemToEnter: (document.querySelector('input[name="itemINPUT"]') as HTMLInputElement),
-        }
-        return ToDoElements;
-    }
-
+    
+    /**
+     * Random Web Bits uses multiple locations to apply the To-Do List widget. Create
+     *  the list markup, passing in a reference element for placement of the widget.
+     * @param elem - widget is placed after this reference element.
+     */
     public createToDoListWidget(elem: Element) {
         
         // Insert the widget after the passed in "elem"
@@ -78,6 +92,24 @@ class ToDoWidget {
         }
     }
 
+    /**
+     * Gather necessary elements from the created widget.
+     * @returns ToDoElements: ToDoListElements
+     */
+    private getToDoListElements() {
+        let ToDoElements: ToDoListElements = {
+            todoTable: (document.querySelector('#ToDO table') as HTMLTableElement),
+            todoTableBody: (document.getElementById('ToDoItems') as HTMLElement),
+            addButton: (document.getElementById('AddButton') as HTMLElement),
+            addItemToEnter: (document.querySelector('input[name="itemINPUT"]') as HTMLInputElement),
+        }
+        return ToDoElements;
+    }
+
+    /**
+     * Checks for To-Do items previously in storage.
+     * @returns boolean true or false
+     */
     private static isToDoInStorage() {
         if (localStorage.getItem('ToDos') != null){
             return true
@@ -85,6 +117,11 @@ class ToDoWidget {
         return false
     }
 
+    /**
+     * Adds a To-Do string to Local Storage. The 'localstoragetodocache' interface
+     *  structures the data for later retrieval.
+     * @param description - User form input to add as a description.
+     */
     private addtoDoToStorage(description: string) {
         // Use interface to structure the data in local storage
         let ToDo: localstoragetodocache = {
@@ -105,6 +142,11 @@ class ToDoWidget {
         }
     }
 
+    /**
+     * Removes a To-Do item from Local Storage. The requested To-Do to remove is
+     *  pulled individually from the key-value pair object.
+     * @param item - the To-Do item requested to remove
+     */
     private removetoDoFromStorage(item: string) {
         if (!ToDoWidget.isToDoInStorage()) {
             try {
@@ -128,6 +170,12 @@ class ToDoWidget {
         }
     }
 
+    /**
+     * This function creates the necessary markup to add a row to the To-Do table.
+     *  A row consists of three columns: a complete tick-box, a description, and a delete button.
+     * @param description - User form input to add as a description.
+     * @param firstPaint - Boolean value used by adding list storage
+     */
     private AddToDoRow(description: string, firstPaint: boolean) {
         //Create a table row with checkbox and delete options
         const TABLEITEM = ToDoWidget.ToDoElements.todoTable;
@@ -179,6 +227,9 @@ class ToDoWidget {
 
     }
 
+    /**
+     * Function called to create the To-Do item rows from To-Dos stored in the browser Local Storage.
+     */
     private populateToDoList() {
         //retrieve todo items in local storage and add each to the list
         if (ToDoWidget.isToDoInStorage()){
@@ -204,6 +255,9 @@ class ToDoWidget {
         }
     }
 
+    /**
+     * Adds button functionality: Delete, Add.
+     */
     private addToDoEventListeners() {
         const ADDBUTTON = ToDoWidget.ToDoElements.addButton;
         const ADDITEMENTER = ToDoWidget.ToDoElements.addItemToEnter;
@@ -234,6 +288,11 @@ class ToDoWidget {
         }
     }
 
+    /**
+     * function determining the delete button. Items are deleted when pushed, but are
+     *  not removed from storage without 'Complete?' checkebox checked.
+     * @param box checkbox element
+     */
     private DeleteButton(box: HTMLInputElement) {
         // When delete button is pressed, remove the respective row
         if (box.parentNode != null && box.parentNode.previousSibling != null &&
@@ -279,6 +338,11 @@ class ToDoWidget {
         }
     }
 
+    /**
+     * This function is called to seed the To-Do List when there are no Local Storage items
+     *  which would populate the list. The sample remains on page but is never stored in the browser.
+     * @param tbody table body element
+     */
     private createSampleTo_Do(tbody: Element) {
         if (!ToDoWidget.isToDoInStorage()) {
             // Create a sample entry in the ToDo table as a placeholder
@@ -305,8 +369,16 @@ class ToDoWidget {
     }
 }
 
+/**
+ * Component containing the To-Do List widget's creation.
+ */
 const todosWidget = {
+    /**
+     * Create a To-Do List widget.
+     * @param elem - Element containing 'ToDoList' class
+     */
     init: () => {
+        // Locate the element for widget placement
         let elem = (document.querySelector(".ToDoList") as Element);
 
         // Create the to-do widget, call create
