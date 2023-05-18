@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) Robert A. Howell  May, 2023
 import { DictionarySearchElements } from './widgetinterface'
 
 export default class DictionarySearchWidget {
