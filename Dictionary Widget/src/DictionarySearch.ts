@@ -3,6 +3,20 @@ import { apiGET } from "./api";
 import { DictionarySearchElements, localstoragewordvalue } from './widgetinterface'
 import DictionarySearchWidget from "./DictionarySearchWidget"
 
+/**
+ * A DictionarySearch is a set of markup creation and functions which allow a user
+ *  to look up a word like a Dictionary. When called, the user's input is validated
+ *  as an acceptable word or it declines the request, then showing the user if the word
+ *  is acceptable.
+ * 
+ * Creating a dictionary search widget requires passing a reference element (for a
+ *  known placement location) that contains the 'dictionaryWidget' class.
+ * 
+ *   new DictionarySearch(elem);
+ * 
+ * All the needed elements and functionality are added to the page.
+ * 
+ */
 export class DictionarySearch extends DictionarySearchWidget {
     public static wordStorage: localstoragewordvalue[];
     private static requestUrl: string = "https://api.dictionaryapi.dev/api/v2/entries/en/";
@@ -13,6 +27,12 @@ export class DictionarySearch extends DictionarySearchWidget {
     private wordData: object;
     private dictionarySearchMarkup: DictionarySearchElements;
 
+    /**
+     * This constructor creates all the functionality and markup needed for the 
+     *  Dictionary Search widget interface.
+     * 
+     * @param elem - The reference element used to place widget markup.
+     */
     constructor(elem: Element) {
         super();
         this.dictionarySearchMarkup = this.createDictionaryWidgetMarkup(elem)!;
@@ -23,6 +43,12 @@ export class DictionarySearch extends DictionarySearchWidget {
         //and their names
     }
 
+    /**
+     * Retrieve Local Storage words previously stored with the Dictionary Search Widget.
+     * 
+     * @returns DictionarySearch.wordStorage - these are the words stored previously in the
+     *  browser cache.
+     */
     public static getLocalStorageWordCaches() {
         //enumerate all of the caches
         //cache response links and cache name are previously stored in local storage
@@ -35,14 +61,29 @@ export class DictionarySearch extends DictionarySearchWidget {
         }
     }
 
+    /**
+     * Call to return the previously searched word.
+     * 
+     * @returns this.wordURL
+     */
     public getWordURL() {
         return this.wordURL;
     }
 
+    /**
+     * Call to return the fetched word data.
+     * 
+     * @returns this.wordData
+     */
     public getWordData() {
         return this.wordData;
     }
 
+    /**
+     * Adds click and keypress event listeners to the widget. Input event listeners 'click'
+     *  and 'keypress' await for a search call. Also, should a user want to search a
+     *  previously searched word, the widget adapts markup for that request.
+     */
     private addWidgetEvents() {
         if (this.dictionarySearchMarkup == undefined) {
             console.log("A search element is undefined from searchWord | wordSearch");
@@ -119,6 +160,14 @@ export class DictionarySearch extends DictionarySearchWidget {
         })
     }
 
+    /** 
+     * Adds the fetched term to the browser's Local Storage --> Key/Value 
+     * data referencing if words are in local cache.
+     * 
+     * @param sendToBrowserCache - //TODO: implemented with Cache Storage use
+     * @param localstoragevalue - This is an interface implementation, storing
+     *  information where sending to local storage.
+     */
     private addDictionaryTermtoLocalStorage(sendToBrowserCache: boolean, localstoragevalue: localstoragewordvalue) {
         let wordStore: any = [];
         wordStore.push(localstoragevalue);
@@ -163,7 +212,18 @@ export class DictionarySearch extends DictionarySearchWidget {
         }
     }
 
-    private fetchDictionaryTerm(word: string, wordUrl: URL, elems: DictionarySearchElements,
+    /**
+     * This function structures inbound fetch request before sending an API fetch 
+     * request. apiGET() is created and called based on parameter data.
+     * 
+     * @param word - The word searched from widget input.
+     * @param wordUrl - The fetch request URL.
+     * @param searchElems - Widget Elements -- used for data validation.
+     * @param sendToCache - ? Send fetch request to Cache Storage : Fetch without storing the request.
+     * @param cacheName - If sending fetch requests to cache, provide a name to store it under.
+     * @returns - wordData: Promise<unknown>
+     */
+    private fetchDictionaryTerm(word: string, wordUrl: URL, searchElems: DictionarySearchElements,
         sendToCache: boolean, cacheName: string | null) {
         //TODO: dictionary cache management:
         //TODO: 1.) is to be cached true? --check
@@ -184,7 +244,7 @@ export class DictionarySearch extends DictionarySearchWidget {
 
         const wordFetchRequest = async () => {
             //set apiGET::sendToBrowserCache to true to use cache storage
-            const wordFetch = new apiGET(wordcache.wordURL, false, wordcache.cacheName, elems.errorElem);
+            const wordFetch = new apiGET(wordcache.wordURL, false, searchElems.errorElem, wordcache.cacheName);
             let noDefinitions: boolean = false;
 
             //fetch request
@@ -208,18 +268,18 @@ export class DictionarySearch extends DictionarySearchWidget {
                 if (navigator.onLine !== false) { // check network status via navigator object
                     if (noDefinitions) {
                         if (wordData.title == "No Definitions Found")
-                            elems.searchWord.classList.add("invalid-notfound");
-                        elems.errorElem.classList.add("error-notfound");
-                        elems.errorElem.innerText = "No Definitions Found";
+                            searchElems.searchWord.classList.add("invalid-notfound");
+                        searchElems.errorElem.classList.add("error-notfound");
+                        searchElems.errorElem.innerText = "No Definitions Found";
                     }
                     else {
-                        elems.searchWord.classList.add("invalid-notfound");
-                        elems.errorElem.classList.add("error-notfound");
-                        elems.errorElem.innerText = "Invalid word!";
+                        searchElems.searchWord.classList.add("invalid-notfound");
+                        searchElems.errorElem.classList.add("error-notfound");
+                        searchElems.errorElem.innerText = "Invalid word!";
                     }
                 }
                 else {
-                    elems.errorElem.innerText += ", check network connection.";
+                    searchElems.errorElem.innerText += ", check network connection.";
                 }
             }
         };
@@ -227,6 +287,14 @@ export class DictionarySearch extends DictionarySearchWidget {
         return wordData;
     }
 
+    /** 
+     * User input validation function tests the input string against a valid Regular Expression.
+     * 
+     * RegExp("^[A-Za-z]{1,45}$")
+     * 
+     * @param intxt - String value received from user field input.
+     * @returns Acceptable user input: true or false.
+     */
     private wordValidation(intxt: string) {
         let trimmed = intxt.trim();
         let lettersRE = new RegExp("^[A-Za-z]{1,45}$");
@@ -239,6 +307,14 @@ export class DictionarySearch extends DictionarySearchWidget {
         }
     }
 
+    /**
+     * callFetchDictionaryTerm creates a promise to fetch a dictionary term.
+     * Of data ingress ti DictionarySearch, markup creation is called for.
+     *
+     * @param searchElems - Widget Elements -- used for data validation.
+     * @param word - The word to be fetched.
+     * @param wordURL - A URL object composing the full string of the fetch request.
+     */
     private callFetchDictionaryTerm(searchElems: DictionarySearchElements, word: string, wordURL: URL) {
         // When the word data resolves, call markup functions
         let wordDataPromise = new Promise((resolve) => {
@@ -257,6 +333,14 @@ export class DictionarySearch extends DictionarySearchWidget {
         searchElems.errorElem.textContent = "";
     }
 
+    /**
+     * wordSearch() begins a word search request. The user input listener chooses 
+     * whether the fetch is called from cache or is new.
+     * 
+     * @param searchElems - Widget Elements -- used for data validation.
+     * @param isFromPreviousWords - True if the user requested a search from a previous word, to call data from Browser Cache.
+     * @param cachedWord - If the user called for a previous word, cachedWord is within the Local Storage.
+     */
     private wordSearch(searchElems: DictionarySearchElements, isFromPreviousWords: boolean, cachedWord: localstoragewordvalue | null) {
         if (isFromPreviousWords) {
             this.callFetchDictionaryTerm(searchElems, cachedWord.word, cachedWord.wordURL);
@@ -282,4 +366,3 @@ export class DictionarySearch extends DictionarySearchWidget {
         searchElems.searchWord.value = ''; // reset input string
     }
 }
-

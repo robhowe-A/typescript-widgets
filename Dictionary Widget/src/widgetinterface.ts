@@ -1,4 +1,7 @@
 //--Copyright (c) Robert A. Howell  May, 2023
+/**
+ * Interface used for DictionarySearch Elements functionality.
+ */
 export interface DictionarySearchElements {
     searchWord: HTMLInputElement;
     wordSearch: HTMLButtonElement;
@@ -8,6 +11,9 @@ export interface DictionarySearchElements {
     refreshBtn: HTMLButtonElement;
 }
 
+/**
+ * Interface used for Local Storage key-value dictionary words
+ */
 export interface localstoragewordvalue {
     inCache: boolean,
     word: string,

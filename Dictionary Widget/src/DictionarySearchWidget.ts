@@ -1,7 +1,25 @@
 //--Copyright (c) Robert A. Howell  May, 2023
 import { DictionarySearchElements } from './widgetinterface'
 
+/**
+ * A DictionarySearchWidget is made to create Dictionary Search markup for the
+ *  page display. Without markup, a search widget does not exist for user
+ *  interaction.
+ * 
+ * Each public functions, the widget markup can be created in multiple site locations.
+ *  All that is needed is a reference element for the widget's placement on
+ *  the page.
+ * 
+ */
 export default class DictionarySearchWidget {
+
+    /**
+     * Primary widget markup structuring the widget elements and search input.
+     * 
+     * @param elem - The reference element before the widget.
+     * @returns searchElements: DictionarySearchElements --> interface of
+     *  important HTML elements used through widget function.
+     */
     public createDictionaryWidgetMarkup(elem: Element) {
         //insert the widget after the passed in "elem"
         if (elem !== undefined) {
@@ -56,6 +74,15 @@ export default class DictionarySearchWidget {
             console.log(`There is no "dictionaryWidget" class on this page.`)
         }
     }
+
+    /**
+     * Creates the markup to house returned words from DictionarySearch. The markup
+     *  is created based on API egress. Words and their definitions vary. The markup is
+     *  adaptive to returned word data structures.
+     * 
+     * @param wordData - This parameter is an object of word types, definitions, and examples.
+     * @param searchElems - Widget Elements -- used for data validation.
+     */
     public createDictionaryTermWithMarkup(wordData: any, searchElems: DictionarySearchElements) {
         if (wordData == null || !(wordData instanceof Object)) {
             try {

@@ -42,7 +42,7 @@
   > ```
 
 -------------------
-# Project initialization: 
+# Project initialization:  
 
 > ```shell
 > #1. Within the project's folder and run the below (4) dependency installations
