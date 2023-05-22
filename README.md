@@ -71,16 +71,18 @@ wordFetchRequest();
   > }
   > ```
 
-
 <details>
 <summary>Details:</summary>  
 
 - Exportable widget based on classname
 
-```HTML
+``` HTML
 <!-- Add widget to aside element -->
 <h1>To Do List Widget (Below)</h1><hr>
 <aside class="ToDoList"></aside>
+```
+
+</details>
 
 - Widget is seeded with a default value, never stored in cache
 - Removing an item requires the checkbox
@@ -97,3 +99,32 @@ wordFetchRequest();
   >    }
   > }
   > ```
+
+## Advice Generator:  
+### FrontEnd Mentor challenge web component displaying colloquial advice expressions  
+
+- View the optimal layout for the app depending on their device's screen size (in development: phase 1)
+- See hover states for all interactive elements on the page (in development: phase 2)
+- Generate a new piece of advice by clicking the dice icon
+
+```JavaScript
+function returnAnAdvice() {
+  let dataPromise = new Promise<adviceData>((resolve, reject) => {
+    resolve(apiGET());
+    reject(new Error("Promise rejected."));
+  })
+  dataPromise
+    .then((data) => {
+    let returnedAdvice: adviceData = data;
+
+    setData(returnedAdvice);
+  })
+  .catch((error) => {
+    console.error("Error fetching data: ", error);
+    setError(error);
+  })
+  .finally(() => {
+    setLoading(false);
+  });
+}
+```
