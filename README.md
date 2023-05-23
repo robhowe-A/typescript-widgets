@@ -108,7 +108,7 @@ wordFetchRequest();
 - Generate a new piece of advice by clicking the dice icon
 
 ```JavaScript
-function returnAnAdvice() {
+function fetchAdvice() {
   let dataPromise = new Promise<adviceData>((resolve, reject) => {
     resolve(apiGET());
     reject(new Error("Promise rejected."));
@@ -116,7 +116,7 @@ function returnAnAdvice() {
   dataPromise
     .then((data) => {
     let returnedAdvice: adviceData = data;
-
+    returnedAdvice = checkDataStringChangeNeeds(returnedAdvice);
     setData(returnedAdvice);
   })
   .catch((error) => {
