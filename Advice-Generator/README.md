@@ -31,6 +31,14 @@ function fetchAdvice() {
 # Project initialization: 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). 
 
-> ```bash
+> ```shell
+> #1. Within the project's folder and run the below (4) dependency installation
+> - Next.js
+> - React-dom
+> npm install next@latest react@latest react-dom@latest
+> 
+> #2. Start environment.
 > npm run dev
+> 
+> #3. After started, the console output offers http://localhost:3000. CTRL + Click to open the project
 > ```
