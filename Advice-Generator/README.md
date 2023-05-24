@@ -32,7 +32,7 @@ function fetchAdvice() {
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). 
 
 > ```shell
-> #1. Within the project's folder and run the below (4) dependency installation
+> #1. Within the project's folder and run the below (2) dependency installation
 > - Next.js
 > - React-dom
 > npm install next@latest react@latest react-dom@latest
