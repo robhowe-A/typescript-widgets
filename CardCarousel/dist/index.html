@@ -7,19 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Slideshow Widget Test</title>
     <script src="typescript.js" async></script>
+    <style>
+        .slideshow {
+            border: 3px solid gray;
+            width: 500px;
+        }
+        .card {
+            border: 1px solid purple;
+        }
+        .slide {
+            border: 1px solid green;
+        }
+    </style>
 </head>
 <body>
     <h1>Slideshow Widget (Below)</h1><hr>
-    <div class="cardslideshow">
-        <div class="card slide" id="DOM"><div><div class="cardBody"><h3>DOM</h3><p>Review the DOM with a DOM tree</p></div></div></div>
-        <div class="card slide" id="HTMLdef"><div><div class="cardBody"><h3>Create HTML elements</h3><p>Learn the parts and syntax of an HTML element</p></div></div>
+    <div class="slideshow">
+        <div class="card slide" style="position:absolute; opacity: 1; transform: translateX(100px)">
+            <h3>Slide1</h3><p>Slide 1 content</p>
         </div>
-        <div class="card slide" id="DOM"><div><div class="cardBody"><h3>DOM</h3><p>Review the DOM with a DOM tree</p></div></div></div>
-        <div class="card slide" id="HTMLdef"><div><div class="cardBody"><h3>Create HTML elements</h3><p>Learn the parts and syntax of an HTML element</p></div></div>
+        <div class="card slide" style="position:absolute; opacity: 1; transform: translateX(300px)">
+            <h3>Slide2</h3><p>Slide 2 content</p>
         </div>
-        <div class="card slide" id="DOM"><div><div class="cardBody"><h3>DOM</h3><p>Review the DOM with a DOM tree</p></div></div></div>
-        <div class="card slide" id="HTMLdef"><div><div class="cardBody"><h3>Create HTML elements</h3><p>Learn the parts and syntax of an HTML element</p></div></div>
+        <div class="card slide">
+            <h3>Slide3</h3><p>Slide 3 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide4</h3><p>Slide 4 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide5</h3><p>Slide 5 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide6</h3><p>Slide 6 content</p>
+        </div>
     </div>
-    <aside class="ToDoList"></aside>
 </body>
 </html>
