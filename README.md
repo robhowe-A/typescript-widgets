@@ -32,7 +32,7 @@ A FrontEnd Mentor challenge: it's a web component that displays colloquial advic
 
 A web component made for www.randomwebbits.com. It's a picture carousel and/or slideshow
 
-<img src="CardSlideShow.png" alt="A slideshow widget." width="70%">
+<img src="CardSlideshow.png" alt="A slideshow widget." width="70%">
 
 **What does it do?**
 
