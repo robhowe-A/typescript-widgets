@@ -55,5 +55,5 @@
 > #3. Launch either with Live Server extension or web server of your choice.
 > #4 (Live Server extension). Extension: Live Server for launch instructions...
 > #
-> #The widget is markup source is /dist/index.html, so the URL may look like "http://127.0.0.1:5500/dist/index.html"
+> #The widget markup source is /dist/index.html, so the URL may look like "http://127.0.0.1:5500/dist/index.html"
 > ```

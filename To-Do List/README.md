@@ -41,8 +41,9 @@
   > }
   > ```
 
--------------------
-# Project initialization:  
+---
+
+# Project initialization:
 
 > ```shell
 > #1. Within the project's folder and run the below (4) dependency installations
@@ -61,4 +62,9 @@
 >
 > #2. Once they're ready, run the below command to begin
 > gulp
+>
+> #3. Launch either with Live Server extension or web server of your choice.
+> #4 (Live Server extension). Extension: Live Server for launch instructions...
+> #
+> #The widget markup source is in the dist folder. The URL may look like "http://127.0.0.1:5500/"
 > ```
