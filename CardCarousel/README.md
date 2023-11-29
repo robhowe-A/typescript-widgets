@@ -18,6 +18,7 @@
 
 - Widget is seeded with 6 basic card elements
 - Move the slideshow left or right using the arrow buttons
+- The slideshow runs via typescript modules. The entry point is CardsSlideShow.init().
   > ```TypeScript
   > import SlideShow from "./CardSlideShow";
   >
