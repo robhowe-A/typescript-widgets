@@ -5,7 +5,6 @@
 ### A carousel/slideshow to display card elements
 
 ```HTML
-<!-- Add widget to aside element -->
     <h1>Slideshow Widget (Below)</h1><hr>
     <div class="cardslideshow">
       <!-- card markup -->
