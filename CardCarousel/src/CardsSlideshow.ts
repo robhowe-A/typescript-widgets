@@ -19,12 +19,10 @@ const CardsSlideShow = {
     slideshow.nextbtn.addEventListener("click", e => {
       e.preventDefault();
       slideshow.next();
-      slideshow.numberElementText();
     });
     slideshow.prevbtn.addEventListener("click", e => {
       e.preventDefault();
       slideshow.previous();
-      slideshow.numberElementText();
     });
   },
   addSlideShowMarkup: slideshow => {

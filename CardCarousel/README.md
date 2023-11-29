@@ -7,32 +7,32 @@
 ```HTML
 <!-- Add widget to aside element -->
     <h1>Slideshow Widget (Below)</h1><hr>
-      <div class="cardslideshow">
-        <!-- card markup -->
-        <!-- card markup -->
-        <!-- card markup -->
-        <!-- card markup -->
-        <!-- card markup -->
-        <!-- card markup -->
-      </div>
-    <aside class="ToDoList"></aside>
+    <div class="cardslideshow">
+      <!-- card markup -->
+      <!-- card markup -->
+      <!-- card markup -->
+      <!-- card markup -->
+      <!-- card markup -->
+      <!-- card markup -->
+    </div>
 ```
 
 - Widget is seeded with 6 basic card elements
 - Move the slideshow left or right using the arrow buttons
   > ```TypeScript
-  > import CardSlideShow from "./CardSlideShow";
-  > 
+  > import SlideShow from "./CardSlideShow";
+  >
   > const CardsSlideShow = {
   >     init: () => {
-  >      //creation, initialization, and functions for slideshow
+  >      //markup creation and slideshow initialization
   >     }
   >  }
   >  CardsSlideShow.init();
   > ```
 
--------------------
-# Project initialization:  
+---
+
+# Project initialization:
 
 > ```shell
 > #1. Within the project's folder and run the below (4) dependency installations
@@ -51,4 +51,9 @@
 >
 > #2. Once they're ready, run the below command to begin
 > gulp
+>
+> #3. Launch either with Live Server extension or web server of your choice.
+> #4 (Live Server extension). Extension: Live Server for launch instructions...
+> #
+> #The widget is markup source is /dist/index.html, so the URL may look like "http://127.0.0.1:5500/dist/index.html"
 > ```

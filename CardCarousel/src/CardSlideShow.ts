@@ -40,6 +40,8 @@ export default class SlideShow {
     this.cardsindxend++;
     this.turn++;
     this.cardcounter++;
+
+    this.numberElementText();
   }
   /**Hides previous slide element */
   previous() {
@@ -65,9 +67,11 @@ export default class SlideShow {
     this.cardsindxend--;
     this.turn--;
     this.cardcounter--;
+
+    this.numberElementText();
   }
 
-  numberElementText() {
+  private numberElementText() {
     //Change the text visible when next or previous is clicked
     this.numberElement.innerText =
       "[" +
