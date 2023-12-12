@@ -58,7 +58,7 @@ A web component made for www.randomwebbits.com. It's a picture carousel and/or s
 > #Prerequisites
 > - Node.js installation: [Install jodejs](https://nodejs.org/en)
 > - PowerShell execution policy enabled
-> ```
+> 
 > #Administrator: Windows PowerShell (Windows)
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
 > ```
