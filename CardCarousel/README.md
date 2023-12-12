@@ -2,8 +2,6 @@
 
 ## Card Carousel Widget:
 
-## Card Carousel:
-
 **What is it?**
 
 A web component made for www.randomwebbits.com. It's a picture carousel and/or slideshow
@@ -57,6 +55,15 @@ A web component made for www.randomwebbits.com. It's a picture carousel and/or s
 # Project initialization:
 
 > ```shell
+> #Prerequisites
+> - Node.js installation: [Install jodejs](https://nodejs.org/en)
+> - PowerShell execution policy enabled
+> ```
+> #Administrator: Windows PowerShell (Windows)
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+> ```
+> ## Recommended developer environment software: VS Code: [Install Visual Studio Code](https://code.visualstudio.com/download)
+> 
 > #1. Within the project's folder and run the below (4) dependency installations
 > # They install gulp-cli, gulp with typescript, browserify, tsify,
 > # vinyl-source-stream, and watchify  dependencies needed to run
