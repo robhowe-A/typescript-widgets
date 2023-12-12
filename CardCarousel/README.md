@@ -2,7 +2,29 @@
 
 ## Card Carousel Widget:
 
-### A carousel/slideshow to display card elements
+## Card Carousel:
+
+**What is it?**
+
+A web component made for www.randomwebbits.com. It's a picture carousel and/or slideshow
+
+<img src="../CardSlideshow.png" alt="A slideshow widget." width="70%">
+
+**What does it do?**
+
+- Interactive due to newly created elements and functions that are not availablle in the original markup
+- JavaScript adds new elements to make the component function as expected
+- Two slides show at a time, one on the left and one on the right
+- The 'SlideShow' is a class with members and functions capable of running the slideshow
+
+**Technology?**
+
+- Built with Gulp + TypeScript compiler
+- Javascript async module
+- HTML markup and JavaScript
+
+
+### Markup & Description
 
 ```HTML
     <h1>Slideshow Widget (Below)</h1><hr>
@@ -18,7 +40,7 @@
 
 - Widget is seeded with 6 basic card elements
 - Move the slideshow left or right using the arrow buttons
-- The slideshow runs via typescript modules. The entry point is CardsSlideShow.init().
+- The slideshow runs via custom modules. The entry point is CardsSlideShow.init().
   > ```TypeScript
   > import SlideShow from "./CardSlideShow";
   >
