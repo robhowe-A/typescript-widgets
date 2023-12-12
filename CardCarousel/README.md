@@ -56,14 +56,16 @@ A web component made for www.randomwebbits.com. It's a picture carousel and/or s
 
 > ``` shell
 > #Prerequisites
-> - Node.js installation: [Install jodejs](https://nodejs.org/en)
+> - Node.js installation: Below install link
 > - PowerShell execution policy enabled
 > 
 > #Administrator: Windows PowerShell (Windows)
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
 > 
-> ## Recommended developer environment software: VS Code: [Install Visual Studio Code](https://code.visualstudio.com/download)
+> ## Recommended developer environment software: VS Code: Below install link
 > ```
+> [Install jodejs](https://nodejs.org/en)
+> [Install Visual Studio Code](https://code.visualstudio.com/download)
 > ```
 > #1. Within the project's folder and run the below (4) dependency installations
 > # They install gulp-cli, gulp with typescript, browserify, tsify,
