@@ -14,7 +14,7 @@ var watchedBrowserify = watchify(
   browserify({
     basedir: ".",
     debug: true,
-    entries: ["src/CardsSlideshow.ts"],
+    entries: ["src/cardsSlideshow.ts"],
     cache: {},
     packageCache: {},
   }).plugin(tsify)
