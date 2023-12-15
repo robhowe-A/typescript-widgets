@@ -14,7 +14,7 @@ var watchedBrowserify = watchify(
   browserify({
     basedir: ".",
     debug: true,
-    entries: ["src/dictionarywidget.ts"],
+    entries: ["src/dictionaryWidget.ts"],
     cache: {},
     packageCache: {},
   }).plugin(tsify)

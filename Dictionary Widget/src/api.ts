@@ -1,7 +1,7 @@
 //--Copyright (c) Robert A. Howell  May, 2023
 
 /**
- * apiGET is for fetch requests. Use an apiGET object to manipulate the fetch
+ * ApiGet is for fetch requests. Use an ApiGet object to manipulate the fetch
  *  request into either:
  * 
  * 1. returning data 
@@ -10,23 +10,23 @@
  * 
  * 2. storing the request in the browser cache to retrieve later
  */
-export class apiGET {
-    private GETURL: URL;
+export class ApiGet {
+    public errorElem: HTMLElement;
+    private getUrl: URL;
     private sendToBrowserCache: boolean = false;
     private browserCacheName: string;
-    public errorElem: HTMLElement;
 
     /**
      * This constructor gathers all the needed information for fetch and/or browser
      *  storage.
      * 
-     * @param GETURL - the (full) url of data request.
+     * @param getUrl - the (full) url of data request.
      * @param sendToBrowserCache  - Boolean value determining fetch caching.
      * @param browserCacheName - If storing the request in browser cache, this string provides the name for storage.
      * @param errorElem - Should the fetch request fail, return error status to this element.
      */
-    constructor(GETURL: URL, sendToBrowserCache: boolean, errorElem: HTMLElement, browserCacheName: string | null) {
-        this.GETURL = GETURL;
+    constructor(getUrl: URL, sendToBrowserCache: boolean, errorElem: HTMLElement, browserCacheName: string | null) {
+        this.getUrl = getUrl;
         this.sendToBrowserCache = sendToBrowserCache;
         this.browserCacheName = browserCacheName;
         this.errorElem = errorElem;
@@ -44,8 +44,8 @@ export class apiGET {
      * 
      * @returns this.GETURL
      */
-    public getGETURL() {
-        return this.GETURL;
+    public getGetUrl() {
+        return this.getUrl;
     };
 
     /**
@@ -58,14 +58,14 @@ export class apiGET {
     /**
      * A fetch request can take URL or string parameter. This function sets the apiGET
      *  object for a URL fetch by creating a URL from the string, or passing the URL.
-     * @param GETURL - the (full) url of data request. 
+     * @param getUrl - the (full) url of data request. 
      */
-    public setGETURL(GETURL: URL | string) {
-        if (typeof GETURL === 'string'){
-            this.GETURL = new URL(GETURL);
+    public setGetUrl(getUrl: URL | string) {
+        if (typeof getUrl === 'string'){
+            this.getUrl = new URL(getUrl);
         }
         else {
-            this.GETURL = GETURL;
+            this.getUrl = getUrl;
         }
     }
 
@@ -89,11 +89,11 @@ export class apiGET {
 
     /**
      * The fetch request, returning a fetch promise.
-     * @param GETURL - the (full) url of data request.
+     * @param getUrl - the (full) url of data request.
      * @returns data.text() or data based on the instance returned.
      */
-    private fetchData(GETURL: URL) {
-        return fetch(GETURL)
+    private fetchData(getUrl: URL) {
+        return fetch(getUrl)
                 .then((response) => this.apiResponseErrorCheck(response))
                 .then((data) => {
                     if (data instanceof Response){
@@ -113,24 +113,24 @@ export class apiGET {
      *  the request needs added to browser storage, the fetch is made and sent to
      *  storage. A cloned copy of the fetched data is returned. Without sending to
      *  browser cache, the fetch is requested and returned.
-     * @param GETURL - the (full) url of data request.
+     * @param getUrl - the (full) url of data request.
      * @returns dataCachePromise: Promise<unknown>
      */
-    public async apiGET(GETURL: URL) {
+    public async apiGET(getUrl: URL) {
         if (this.sendToBrowserCache){
             let dataCachePromise = new Promise((resolve, reject)=> {
                 if ('caches' in window) {
                     // Open cache and check for request existing in Cache Storage
                     window.caches.open(this.browserCacheName).then((cache) => {
-                        caches.match(GETURL).then((result)=>{
+                        caches.match(getUrl).then((result)=>{
                             if (result === undefined){
                                 // Fetch the request normally
-                                fetch(GETURL).then((result) => {
+                                fetch(getUrl).then((result) => {
                                     // Make a copy of the response since it can only be read once
                                     let clonedresp = result.clone();
         
                                     // Add the result to the cache
-                                    cache.put(GETURL, result);
+                                    cache.put(getUrl, result);
                                     console.log("Word cached to cache storage.")
                                     resolve(clonedresp.json().then((text) => text));
                                 })
@@ -150,7 +150,7 @@ export class apiGET {
         }
         else {
             let dataPromise = new Promise((resolve, reject)=> {
-                resolve(this.fetchData(GETURL))
+                resolve(this.fetchData(getUrl))
             })
             dataPromise.then((data) => {
                 return data;

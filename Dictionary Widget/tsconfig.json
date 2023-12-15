@@ -1,5 +1,5 @@
 {
-    "files": ["src/dictionarywidget.ts"],
+    "files": ["src/dictionaryWidget.ts"],
     "compilerOptions": {
       "noImplicitAny": true,
       "target": "ES2022"

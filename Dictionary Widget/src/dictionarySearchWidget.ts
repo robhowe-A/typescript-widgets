@@ -1,5 +1,5 @@
 //--Copyright (c) Robert A. Howell  May, 2023
-import { DictionarySearchElements } from './widgetinterface'
+import { DictionarySearchElements } from './widgetInterface'
 
 /**
  * A DictionarySearchWidget is made to create Dictionary Search markup for the

@@ -1,7 +1,7 @@
 //--Copyright (c) Robert A. Howell  May, 2023
-import { apiGET } from "./api";
-import { DictionarySearchElements, localstoragewordvalue } from './widgetinterface'
-import DictionarySearchWidget from "./DictionarySearchWidget"
+import { ApiGet } from "./api";
+import { DictionarySearchElements, localstoragewordvalue } from './widgetInterface'
+import DictionarySearchWidget from "./dictionarySearchWidget"
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
@@ -244,11 +244,11 @@ export class DictionarySearch extends DictionarySearchWidget {
 
         const wordFetchRequest = async () => {
             //set apiGET::sendToBrowserCache to true to use cache storage
-            const wordFetch = new apiGET(wordcache.wordURL, false, searchElems.errorElem, wordcache.cacheName);
+            const wordFetch = new ApiGet(wordcache.wordURL, false, searchElems.errorElem, wordcache.cacheName);
             let noDefinitions: boolean = false;
 
             //fetch request
-            let data = await wordFetch.apiGET(wordFetch.getGETURL());
+            let data = await wordFetch.apiGET(wordFetch.getGetUrl());
             if (typeof data == 'string') {
                 data = JSON.parse(data);
             }

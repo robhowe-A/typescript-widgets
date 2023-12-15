@@ -1,5 +1,5 @@
 //--Copyright (c) Robert A. Howell  May, 2023
-import { DictionarySearch } from './DictionarySearch'
+import { DictionarySearch } from './dictionarySearch'
 
 /**
  * Component containing the dictionary widget's creation.
