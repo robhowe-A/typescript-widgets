@@ -14,7 +14,7 @@ var watchedBrowserify = watchify(
   browserify({
     basedir: ".",
     debug: true,
-    entries: ["src/todowidget.ts"],
+    entries: ["src/toDoWidget.ts"],
     cache: {},
     packageCache: {},
   }).plugin(tsify)

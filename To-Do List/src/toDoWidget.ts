@@ -1,12 +1,12 @@
 //--Copyright (c) Robert A. Howell  May, 2023
-import { ToDoListElements, localstoragetodocache } from "./todowidgetinterface";
+import { ToDoListElements, localStorageToDoCache } from "./toDoWidgetInterface";
 
 /**
- * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the
- *  ToDoList constructor to create widget markup and functionality. To-Dos are
+ * A ToDoWidget is an HTML widget to store To-Dos in the browser. Instantiate the
+ *  ToDoWidget constructor to create widget markup and functionality. To-Dos are
  *  stored in the browser's local storage and read and rendered when the page loads.
  * 
- * To create a ToDoList, an element on the page must have '.ToDoList' class. Call the
+ * To create a ToDoWidget, an element on the page must have '.ToDoList' class. Call the
  *  class constructor, passing in that element to create the widget.
  *
  *       const todoWidget = new ToDoList();
@@ -16,17 +16,17 @@ import { ToDoListElements, localstoragetodocache } from "./todowidgetinterface";
  */
 class ToDoWidget {
     public static todosInLocalStorage: boolean = false;
-    public static ToDOs: number = 0;
-    private static ToDoElements: ToDoListElements;
+    public static toDos: number = 0;
+    private static toDoElements: ToDoListElements;
 
     /**
      * A function to assign todolist elements internal:
      * 
      *      ToDoList.ToDoElements = ToDoListElements;
-     * @param ToDoListElements - important Widget Elements.
+     * @param toDoListElements - important Widget Elements.
      */
-    public static setToDoListElements(ToDoListElements: ToDoListElements) {
-        ToDoWidget.ToDoElements = ToDoListElements;
+    public static setToDoListElements(toDoListElements: ToDoListElements) {
+        ToDoWidget.toDoElements = toDoListElements;
     }
     
     /**
@@ -42,39 +42,39 @@ class ToDoWidget {
         if (elem !== undefined) {
             if (elem.classList.contains("ToDoList")) {
                 // Create table elements needed for the todo list
-                const todolistSection = elem.insertAdjacentElement("beforeend", document.createElement("section"))!;
-                const header = todolistSection.appendChild(document.createElement('h3'));
-                const div = todolistSection.appendChild(document.createElement('div'));
-                const table = div.appendChild(document.createElement('table'));
-                const thead = table.appendChild(document.createElement('thead'));
-                const tr1 = thead.appendChild(document.createElement('tr'));
-                const thleft = tr1.appendChild(document.createElement('th'));
-                const thmiddle = tr1.appendChild(document.createElement('th'));
-                const tbody = table.appendChild(document.createElement('tbody'));
-                const tfoot = table.appendChild(document.createElement('tfoot'));
-                const tr3 = tfoot.appendChild(document.createElement('tr'));
-                const td3left = tr3.appendChild(document.createElement('td'));
-                const td3IN = td3left.appendChild(document.createElement('input'));
-                const td3middle = tr3.appendChild(document.createElement('td'));
-                const INPUT = td3middle.appendChild(document.createElement('input'));
+                const TODOLISTSECTION = elem.insertAdjacentElement("beforeend", document.createElement("section"))!;
+                const HEADER = TODOLISTSECTION.appendChild(document.createElement('h3'));
+                const DIV = TODOLISTSECTION.appendChild(document.createElement('div'));
+                const TABLE = DIV.appendChild(document.createElement('table'));
+                const THEAD = TABLE.appendChild(document.createElement('thead'));
+                const TR1 = THEAD.appendChild(document.createElement('tr'));
+                const THLEFT = TR1.appendChild(document.createElement('th'));
+                const THMIDDLE = TR1.appendChild(document.createElement('th'));
+                const TBODY = TABLE.appendChild(document.createElement('tbody'));
+                const TFOOT = TABLE.appendChild(document.createElement('tfoot'));
+                const TR3 = TFOOT.appendChild(document.createElement('tr'));
+                const TD3LEFT = TR3.appendChild(document.createElement('td'));
+                const TD3IN = TD3LEFT.appendChild(document.createElement('input'));
+                const TD3MIDDLE = TR3.appendChild(document.createElement('td'));
+                const INPUT = TD3MIDDLE.appendChild(document.createElement('input'));
 
                 // Add attributes and property values
-                table.appendChild(document.createElement('tfoot'));
-                td3IN.setAttribute("aria-label", "Add");
-                td3IN.setAttribute("Value", "Add");
+                TABLE.appendChild(document.createElement('tfoot'));
+                TD3IN.setAttribute("aria-label", "Add");
+                TD3IN.setAttribute("Value", "Add");
                 INPUT.setAttribute("name", "itemINPUT");
                 INPUT.setAttribute("type", "text");
                 INPUT.setAttribute("aria-label", "Input");
-                header.textContent = "To-Do:";
-                todolistSection.id = "ToDO";
-                thleft.textContent = "Complete?";
-                thmiddle.textContent = "Description";
-                tbody.id = "ToDoItems";
-                td3IN.id = "AddButton";
-                td3IN.type = "button";
+                HEADER.textContent = "To-Do:";
+                TODOLISTSECTION.id = "ToDO";
+                THLEFT.textContent = "Complete?";
+                THMIDDLE.textContent = "Description";
+                TBODY.id = "ToDoItems";
+                TD3IN.id = "AddButton";
+                TD3IN.type = "button";
 
                 // Create a sample to do item (it is not stored in cache)
-                this.createSampleTo_Do(tbody);
+                this.createSampleTo_Do(TBODY);
 
                 // With the elements created, set the class list elements
                 let listElements:ToDoListElements = this.getToDoListElements();
@@ -97,13 +97,13 @@ class ToDoWidget {
      * @returns ToDoElements: ToDoListElements
      */
     private getToDoListElements() {
-        let ToDoElements: ToDoListElements = {
-            todoTable: (document.querySelector('#ToDO table') as HTMLTableElement),
-            todoTableBody: (document.getElementById('ToDoItems') as HTMLElement),
+        let toDoElements: ToDoListElements = {
+            toDoTable: (document.querySelector('#ToDO table') as HTMLTableElement),
+            toDoTableBody: (document.getElementById('ToDoItems') as HTMLElement),
             addButton: (document.getElementById('AddButton') as HTMLElement),
             addItemToEnter: (document.querySelector('input[name="itemINPUT"]') as HTMLInputElement),
         }
-        return ToDoElements;
+        return toDoElements;
     }
 
     /**
@@ -118,21 +118,21 @@ class ToDoWidget {
     }
 
     /**
-     * Adds a To-Do string to Local Storage. The 'localstoragetodocache' interface
+     * Adds a To-Do string to Local Storage. The localStorageToDoCache interface
      *  structures the data for later retrieval.
      * @param description - User form input to add as a description.
      */
     private addtoDoToStorage(description: string) {
         // Use interface to structure the data in local storage
-        let ToDo: localstoragetodocache = {
+        let ToDo: localStorageToDoCache = {
             inCache: false,
-            todoitem: description,
+            toDoItem: description,
         }
         let ToDos: any = [];
         ToDos.push(ToDo);
         //add the ToDos to local cache
         if (ToDoWidget.isToDoInStorage()){
-            let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos')!);
+            let todos: localStorageToDoCache[] = JSON.parse(localStorage.getItem('ToDos')!);
             todos.push(ToDo);
             localStorage.setItem('ToDos', JSON.stringify(todos));
         }
@@ -147,7 +147,7 @@ class ToDoWidget {
      *  pulled individually from the key-value pair object.
      * @param item - the To-Do item requested to remove
      */
-    private removetoDoFromStorage(item: string) {
+    private removeToDoFromStorage(item: string) {
         if (!ToDoWidget.isToDoInStorage()) {
             try {
                 throw new Error("Local storage values null.");
@@ -161,8 +161,8 @@ class ToDoWidget {
             }
         }
         else {
-            let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos')!);
-            todos = todos.filter((todo) => todo.todoitem !== item);
+            let todos: localStorageToDoCache[] = JSON.parse(localStorage.getItem('ToDos')!);
+            todos = todos.filter((todo) => todo.toDoItem !== item);
             if (todos.length > 0)
                 localStorage.setItem('ToDos', JSON.stringify(todos));
             else
@@ -176,36 +176,36 @@ class ToDoWidget {
      * @param description - User form input to add as a description.
      * @param firstPaint - Boolean value used by adding list storage
      */
-    private AddToDoRow(description: string, firstPaint: boolean) {
+    private addToDoRow(description: string, firstPaint: boolean) {
         //Create a table row with checkbox and delete options
-        const TABLEITEM = ToDoWidget.ToDoElements.todoTable;
+        const TABLEITEM = ToDoWidget.toDoElements.toDoTable;
         if (TABLEITEM != null) {
-            const tableFrag = document.createDocumentFragment();
-            const newRow = tableFrag.appendChild(document.createElement('tr')); //Add row
-            const firstCOL = newRow.appendChild(document.createElement('td')); //Table first data
-            const checkBOX = firstCOL.appendChild(document.createElement('input')); //Add checkbox
-            const newITEM = newRow.appendChild(document.createElement('td')); //Table second data
-            const secondCOL = newRow.appendChild(document.createElement('td')); //Table third data
-            const delBOX = secondCOL.appendChild(document.createElement('input')) //Add deletebox
+            const TABLEFRAG = document.createDocumentFragment();
+            const NEWROW = TABLEFRAG.appendChild(document.createElement('tr')); //Add row
+            const FIRSTCOL = NEWROW.appendChild(document.createElement('td')); //Table first data
+            const CHECKBOX = FIRSTCOL.appendChild(document.createElement('input')); //Add checkbox
+            const NEWITEM = NEWROW.appendChild(document.createElement('td')); //Table second data
+            const SECONDCOL = NEWROW.appendChild(document.createElement('td')); //Table third data
+            const DELBOX = SECONDCOL.appendChild(document.createElement('input')) //Add deletebox
 
             // Add attributes and property values
-            checkBOX.setAttribute('type', 'checkbox');
-            checkBOX.setAttribute('aria-label', 'Checkbox');
-            checkBOX.setAttribute('aria-label', 'Delete');
-            newITEM.setAttribute('num', ToDoWidget.ToDOs ? (() => {
+            CHECKBOX.setAttribute('type', 'checkbox');
+            CHECKBOX.setAttribute('aria-label', 'Checkbox');
+            CHECKBOX.setAttribute('aria-label', 'Delete');
+            NEWITEM.setAttribute('num', ToDoWidget.toDos ? (() => {
                 let elem = document.querySelector('#ToDO td[num]');
-                return ((Number(elem?.getAttribute("num")) || -1000) + ToDoWidget.ToDOs).toString();
+                return ((Number(elem?.getAttribute("num")) || -1000) + ToDoWidget.toDos).toString();
             })() : (1).toString());
-            newITEM.textContent = description.toString(); //Populate second col
-            ToDoWidget.ToDOs++; //Number of Items
-            delBOX.setAttribute('type', 'submit');
-            delBOX.setAttribute('value', 'Delete');
+            NEWITEM.textContent = description.toString(); //Populate second col
+            ToDoWidget.toDos++; //Number of Items
+            DELBOX.setAttribute('type', 'submit');
+            DELBOX.setAttribute('value', 'Delete');
 
             // Add the row to the ToDos table
-            TABLEITEM.appendChild(tableFrag);
+            TABLEITEM.appendChild(TABLEFRAG);
 
             //add an event listener for when 'delete' is clicked
-            delBOX.addEventListener("click", () => { this.DeleteButton(delBOX); });
+            DELBOX.addEventListener("click", () => { this.deleteButton(DELBOX); });
 
             if (firstPaint) {
                 //add to list storage
@@ -233,11 +233,11 @@ class ToDoWidget {
     private populateToDoList() {
         //retrieve todo items in local storage and add each to the list
         if (ToDoWidget.isToDoInStorage()){
-            let parsedToDos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos')!);
+            let parsedToDos: localStorageToDoCache[] = JSON.parse(localStorage.getItem('ToDos')!);
 
             if (parsedToDos != null) {
                 for (let i = 0; i < parsedToDos.length; i++) {
-                    this.AddToDoRow(parsedToDos[i].todoitem, false);
+                    this.addToDoRow(parsedToDos[i].toDoItem, false);
                 }
             }
         }
@@ -259,17 +259,17 @@ class ToDoWidget {
      * Adds button functionality: Delete, Add.
      */
     private addToDoEventListeners() {
-        const ADDBUTTON = ToDoWidget.ToDoElements.addButton;
-        const ADDITEMENTER = ToDoWidget.ToDoElements.addItemToEnter;
+        const ADDBUTTON = ToDoWidget.toDoElements.addButton;
+        const ADDITEMENTER = ToDoWidget.toDoElements.addItemToEnter;
         if (ADDBUTTON != null && ADDITEMENTER != null) {
             ADDBUTTON.addEventListener("click", () => {
-                this.AddToDoRow(ADDITEMENTER.value, true);
+                this.addToDoRow(ADDITEMENTER.value, true);
                 ADDITEMENTER.value = '';
             });
 
             ADDITEMENTER.addEventListener("keydown", (e) => {
                 if (e.code == 'NumpadEnter' || e.code == 'Enter') {
-                    this.AddToDoRow(ADDITEMENTER.value, true);
+                    this.addToDoRow(ADDITEMENTER.value, true);
                     ADDITEMENTER.value = '';
                 }
             });
@@ -293,14 +293,14 @@ class ToDoWidget {
      *  not removed from storage without 'Complete?' checkebox checked.
      * @param box checkbox element
      */
-    private DeleteButton(box: HTMLInputElement) {
+    private deleteButton(box: HTMLInputElement) {
         // When delete button is pressed, remove the respective row
         if (box.parentNode != null && box.parentNode.previousSibling != null &&
             box.parentNode.previousSibling.previousSibling != null) {
 
             let rowChkBx = <HTMLElement>box.parentNode.previousSibling.previousSibling;
             let rowChkBxIN = <HTMLInputElement>rowChkBx.childNodes[0];
-            const todoTable: HTMLTableElement = ToDoWidget.ToDoElements.todoTable;
+            const todoTable: HTMLTableElement = ToDoWidget.toDoElements.toDoTable;
             if (todoTable != null) {
                 let tr: HTMLTableRowElement = <HTMLTableRowElement>box.parentNode.parentNode;
                 let i = tr.rowIndex;
@@ -310,17 +310,17 @@ class ToDoWidget {
                     todoTable.deleteRow(i);
 
                     if (value != 'Add a ToDO Item.') {
-                        ToDoWidget.ToDOs--;
+                        ToDoWidget.toDos--;
 
                         //delete associated storage item
-                        this.removetoDoFromStorage((value as string));
+                        this.removeToDoFromStorage((value as string));
                     }
                 }
                 else {
                     // remove the row from the page
                     // if the checkbox isn't completed, the to-do will come back
                     todoTable.deleteRow(i);
-                    ToDoWidget.ToDOs--;
+                    ToDoWidget.toDos--;
                 }
             }
             else {
@@ -341,30 +341,30 @@ class ToDoWidget {
     /**
      * This function is called to seed the To-Do List when there are no Local Storage items
      *  which would populate the list. The sample remains on page but is never stored in the browser.
-     * @param tbody table body element
+     * @param tBody table body element
      */
-    private createSampleTo_Do(tbody: Element) {
+    private createSampleTo_Do(tBody: Element) {
         if (!ToDoWidget.isToDoInStorage()) {
             // Create a sample entry in the ToDo table as a placeholder
-            const tr2 = tbody.appendChild(document.createElement('tr'));
-            const td2left = tr2.appendChild(document.createElement('td'));
-            const td2IN = td2left.appendChild(document.createElement('input'));
-            const td2middle = tr2.appendChild(document.createElement('td'));
-            const td2right = tr2.appendChild(document.createElement('td'));
-            const td2DEL = td2right.appendChild(document.createElement('input'));
+            const TR2 = tBody.appendChild(document.createElement('tr'));
+            const TD2LEFT = TR2.appendChild(document.createElement('td'));
+            const TD2IN = TD2LEFT.appendChild(document.createElement('input'));
+            const TD2MIDDLE = TR2.appendChild(document.createElement('td'));
+            const TD2RIGHT = TR2.appendChild(document.createElement('td'));
+            const TD2DEL = TD2RIGHT.appendChild(document.createElement('input'));
 
             // Add attributes and property values
-            td2IN.setAttribute("aria-label", "Checkbox");
-            td2middle.setAttribute("num", `${1}`);
-            td2IN.setAttribute("aria-label", "Delete");
-            td2DEL.setAttribute("type", "reset");
-            td2DEL.setAttribute("value", "Delete");
-            td2IN.type = "checkbox";
-            td2middle.textContent = "Add a ToDO Item.";
-            ToDoWidget.ToDOs++;
+            TD2IN.setAttribute("aria-label", "Checkbox");
+            TD2MIDDLE.setAttribute("num", `${1}`);
+            TD2IN.setAttribute("aria-label", "Delete");
+            TD2DEL.setAttribute("type", "reset");
+            TD2DEL.setAttribute("value", "Delete");
+            TD2IN.type = "checkbox";
+            TD2MIDDLE.textContent = "Add a ToDO Item.";
+            ToDoWidget.toDos++;
 
             //"delete" event listener
-            td2DEL.addEventListener("click", () => { this.DeleteButton(td2DEL) });
+            TD2DEL.addEventListener("click", () => { this.deleteButton(TD2DEL) });
         }
     }
 }
@@ -372,7 +372,7 @@ class ToDoWidget {
 /**
  * Component containing the To-Do List widget's creation.
  */
-const todosWidget = {
+const toDosWidget = {
     /**
      * Create a To-Do List widget.
      * @param elem - Element containing 'ToDoList' class
@@ -382,11 +382,11 @@ const todosWidget = {
         let elem = (document.querySelector(".ToDoList") as Element);
 
         // Create the to-do widget, call create
-        const todoWidget = new ToDoWidget();
+        const toDoWidget = new ToDoWidget();
 
         // Creates the markup needed and imports data from local storage, containing the todo items
-        todoWidget.createToDoListWidget(elem);
+        toDoWidget.createToDoListWidget(elem);
     }
 };
 
-todosWidget.init();
+toDosWidget.init();

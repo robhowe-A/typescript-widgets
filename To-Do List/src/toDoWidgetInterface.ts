@@ -4,8 +4,8 @@
  * Interface used for To-Do List elements functionality.
  */
 export interface ToDoListElements {
-    todoTable: HTMLTableElement,
-    todoTableBody: HTMLElement;
+    toDoTable: HTMLTableElement,
+    toDoTableBody: HTMLElement;
     addButton: HTMLElement;
     addItemToEnter: HTMLInputElement;
 }
@@ -13,7 +13,7 @@ export interface ToDoListElements {
 /**
  * Interface used for Local Storage key-value dictionary words
  */
-export interface localstoragetodocache {
+export interface localStorageToDoCache {
     inCache: boolean,
-    todoitem: string,
+    toDoItem: string,
 }
