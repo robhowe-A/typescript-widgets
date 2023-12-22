@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 3px solid greenyellow;
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            display:inline;
+            background-color: darkcyan;
+        }
+        .showSpace {
+            max-width: 80%;
+            margin-left: 250px;
+            border: 10px solid slateblue;
+            display: flex;
+            flex-wrap:wrap;
+            position: relative;
+
+        }
+        header{
+            height: 200px;
+            width: 100vw;
+        }
+        .links {
+            background-color: lightblue;
+        }
+
+    </style>
+    <script src="draggable.js" defer></script>
+</head>
+<body>
+    <header></header>
+    <div>1</div>
+
+    <div class="showSpace">
+        <div id="mydiv" class="box" data-arrayList-type="box"><a data-arrayList-type="link">Elements</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Console</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Sources</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Network</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Performance</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Memory</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Application</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Security</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Lighthouse</a></div>
+        <div class="box" data-arrayList-type="box"><a data-arrayList-type="link">Recorder</a></div>
+
+    </div>
+</body>
+</html>
