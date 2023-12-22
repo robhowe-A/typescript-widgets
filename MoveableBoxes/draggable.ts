@@ -3,31 +3,31 @@
 const linkswidget = () => {
 	// global variables
 // Make the DIV element draggable:
-	let allLinks = document.querySelectorAll(".showSpace a[data-arrayList-type=\"link\"]");
-	let allBoxes = document.querySelectorAll(".showSpace div[data-arrayList-type=\"box\"]");
-	let currentDroppable = null;
-	let movingObject;
+	let allLinks = document.querySelectorAll(".showSpace a[data-arrayList-type=\"link\"]") as NodeListOf<HTMLAnchorElement>;
+	let allBoxes = document.querySelectorAll(".showSpace div[data-arrayList-type=\"box\"]") as NodeListOf<HTMLElement>;
+	let currentDroppable: HTMLElement;
+	let movingObject: HTMLElement;
 	// Add box dataset attributes
 	for (let i=0; i<allBoxes.length;i++){
 		// Add box number to dataset
-		allBoxes[i].setAttribute("data-arrayList-boxnumber", i+1);
+		allBoxes[i].setAttribute("data-arrayList-boxnumber", `${i+1}`);
 	
 		// Check box has only one link, fill attribute
 		if (allBoxes[i].querySelectorAll("a").length == 1){
-			allBoxes[i].setAttribute("filled", true);
+			allBoxes[i].setAttribute("filled", "true");
 		}
 	}
 	// Add link dataset attributes
 	for (let i=0;i<allLinks.length;i++){
 		//add link number to dataset
-		allLinks[i].setAttribute("data-arrayList-linknumber", i+1);
+		allLinks[i].setAttribute("data-arrayList-linknumber", `${i+1}`);
 	}
 	// Create box coordinates array, add box number to dataset
-	let allBoxesCoordinates = [];
+	let allBoxesCoordinates: any[] = [];
 	let createBoxCoordinates = () => {
 		for (let i=0; i<allBoxes.length;i++){
 		// Create box object
-			let box = {
+			let box:any = {
 				name: `box${i}`,
 				boxNumber: i,
 				centerX: allBoxes[i].getBoundingClientRect().left + (allBoxes[i].getBoundingClientRect().width / 2),
@@ -47,7 +47,7 @@ const linkswidget = () => {
 	const setBoxFilledAttribute = () => {
 		allBoxes.forEach(box => {
 			if (box.querySelectorAll("a").length == 0){
-				box.setAttribute("filled", false);
+				box.setAttribute("filled", "false");
 			}
 			else if (box.querySelectorAll("a").length > 1){
 				box.setAttribute("filled", "overfilled");
@@ -67,21 +67,21 @@ const linkswidget = () => {
 	
 		//Move link out from overfilled box
 		if(overFilledLinks.length > 1) overFilledOrigLink = overFilledLinks[1];
-		let falseFilledBox = document.querySelector(".showSpace div[data-arrayList-type=\"box\"][filled=\"false\"]");
+		let falseFilledBox = document.querySelector(".showSpace div[data-arrayList-type=\"box\"][filled=\"false\"]") as HTMLDivElement;
 		falseFilledBox.insertAdjacentElement("afterbegin", overFilledOrigLink);
 
 		setBoxFilledAttribute();
 	};
 
 	//returns the distance of two points
-	let getDistance = (x1, y1, x2, y2) => {
+	let getDistance = (x1:number , y1:number , x2:number , y2: number) => {
 		return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
 	};
 
-	const dragElement = (draggableElmnt) => {
+	const dragElement = (draggableElmnt: HTMLElement) => {
 		var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-		const dragMouseDown = (e) => {
+		const dragMouseDown = (e: MouseEvent) => {
 			e.preventDefault();
 			draggableElmnt.style.position = "absolute";
 			movingObject = draggableElmnt;
@@ -97,7 +97,7 @@ const linkswidget = () => {
 
 		draggableElmnt.onmousedown = dragMouseDown;
 
-		const elementDrag = (e) => {
+		const elementDrag = (e: MouseEvent) => {
     
 			e.preventDefault();
 			// calculate the new cursor position:
@@ -113,7 +113,7 @@ const linkswidget = () => {
 			let elmntCenterX = draggableElmnt.getBoundingClientRect().left + (draggableElmnt.getBoundingClientRect().width / 2);
 			let elmntCenterY = draggableElmnt.getBoundingClientRect().top + (draggableElmnt.getBoundingClientRect().height / 2);
 		
-			let distancesFromCursorToBoxes = []; //all box distances from drag location
+			let distancesFromCursorToBoxes: number[] = []; //all box distances from drag location
 			for (let box of allBoxesCoordinates){
 				distancesFromCursorToBoxes.push(getDistance(box.centerX, box.centerY, elmntCenterX, elmntCenterY));
 			}
@@ -122,10 +122,10 @@ const linkswidget = () => {
 
 			//set the closest box
 			let closestBox;
-			let closestBoxElem;
+			let closestBoxElem: HTMLElement;
 
 			closestBox = allBoxesCoordinates[distancesFromCursorToBoxes.findIndex(num => num == lowestDistToBox)];
-			closestBoxElem = allBoxes[closestBox.boxNumber];
+			closestBoxElem = allBoxes[closestBox.boxNumber] as HTMLElement;
 
 			if (currentDroppable != closestBoxElem) {
 				if (currentDroppable) { // null when we were not over a droppable before this event

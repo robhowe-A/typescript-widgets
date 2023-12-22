@@ -1,24 +1,24 @@
 # typescript-widgets
 
-## Dictionary Widget:
+## MoveableBoxes Widget:
 
-### Search box word entry and definition retrieval
+### Click and drag boxes to rearrange
 
-- Retrieve words from a word dictionary API.
-- Asynchronous word fetch
-- Dynamic markup creation
+-  
+-  
+-  
 
 ```TypeScript
 
 ```
 
-- Cached word entries in **local storage**
+-  
 
   > ```TypeScript
   >
   > ```
 
-- Cached responses (for offline use) in **cache storage**
+-  
 
   > ```TypeScript
   >
