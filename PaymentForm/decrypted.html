@@ -1,0 +1,32 @@
+﻿<!--Copyright (c) Robert A. Howell  2026-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "/secret-decrypt.js": "/secret-decrypt.min.js",
+            "/output.js": "/output.min.js"
+          }
+        }
+    </script>
+    <script src="/secret-decrypt.min.js" type="module"></script>
+    <script src="/output.min.js" type="module"></script>
+</head>
+<body id="decrypted">
+    <output
+            id="PIFS"
+            name="Summary"
+            for="PIF"
+            style="display: inline-block; border: 1px solid green;">
+        <span>Name(text): <strong data-id="decrypted-name"></strong></span><br>
+        <span>Card Number(text): <strong data-id="decrypted-number"></strong></span><br>
+        <span>CVV Number(text): <strong data-id="decrypted-code"></strong></span><br>
+        <span>Expiration Month(text): <strong data-id="decrypted-month"></strong></span>
+    </output>
+</body>
+</html>

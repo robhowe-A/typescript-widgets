@@ -1,0 +1,124 @@
+<!--Copyright (c) Robert A. Howell  2026-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "/form-output.js": "/form-output.min.js",
+            "/form-submit.js": "/form-submit.min.js",
+            "/secret-encrypt.js": "/secret-encrypt.min.js"
+          }
+        }
+    </script>
+    <script src="/form-output.min.js" type="module"></script>
+    <script src="/form-submit.min.js" type="module"></script>
+    <script src="/secret-encrypt.min.js" type="module"></script>
+</head>
+<body>
+    <form 
+      action="decrypted.html" 
+      method="post" 
+      accept-charset="UTF-8" 
+      name="PIF" 
+      enctype="text/plain">
+        <fieldset>
+            <legend>Payment Information</legend>
+            <div>
+                <label>Card Holder Name:
+                    <input 
+                      name="cardholder-name" 
+                      data-validate="name" 
+                      type="text" 
+                      spellcheck="false" 
+                      required 
+                      placeholder="Name" 
+                      style="appearance: textfield;" 
+                      autofocus 
+                      autocorrect="off" 
+                      pattern="^\w+\s\w+$" 
+                      title="Accepted Input: First Last">
+                </label>
+            </div>
+            <div>
+              <div>
+                  <label>Credit Card Number
+                    <input
+                      name="credit-number" 
+                      data-validate="number" 
+                      type="text" 
+                      spellcheck="false" 
+                      required 
+                      placeholder="Card Number" 
+                      autocorrect="off"
+                      pattern="^\d{4}(-)\d{4}\1\d{4}\1\d{4}$" 
+                      title="Accepted Input: ####-####-####-####">
+                  </label>
+              </div>
+              <div>
+                  <label>CVV Number
+                    <input 
+                      name="card-verification-number" 
+                      data-validate="code" 
+                      type="text" 
+                      spellcheck="false" 
+                      required 
+                      placeholder="CVV Digits" 
+                      autocorrect="off" 
+                      pattern="^\d{3}$" 
+                      title="Accepted Input: ###">
+                  </label>
+                  <label>Expiration Month
+                    <input 
+                      name="card-expiration-month" 
+                      data-validate="month" 
+                      type="month" 
+                      spellcheck="false" 
+                      required 
+                      placeholder="YYYY-MM" 
+                      autocorrect="off" 
+                      pattern="^\d{4}(-|/)\d{2}$" 
+                      title="Accepted Input: YYYY-MM">
+                  </label>
+              </div>
+            </div>
+            <input type="reset">
+            <input type="submit">
+        </fieldset>
+        <input 
+          id="Transaction-Guid" 
+          type="hidden" 
+          spellcheck="false" 
+          value="00000000-00000000-00000000-00000000">
+        <input 
+          id="Origin-Site" 
+          type="hidden" 
+          spellcheck="false" 
+          value="00000000-00000000-00000000-00000000">
+        <output 
+          id="PIFS" 
+          name="Summary" 
+          for="PIF" 
+          style="display: inline-block; border: 1px solid green;">
+            <span>Name(text): <strong data-id="validated-name"></strong></span><br>
+            <span>Card Number(text): <strong data-id="validated-number"></strong></span><br>
+            <span>CVV Number(text): <strong data-id="validated-code"></strong></span><br>
+            <span>Expiration Month(text): <strong data-id="validated-month"></strong></span>
+        </output>
+        <output 
+              id="PIFIM" 
+              name="Intermediate" 
+              for="PIF" 
+              style="display: inline-block; border: 1px solid goldenrod;">
+            <span>Name(encrypted): <strong data-id="encrypted-name"></strong></span><br>
+            <span>Card Number(encrypted): <strong data-id="encrypted-number"></strong></span><br>
+            <span>CVV Number(encrypted): <strong data-id="encrypted-code"></strong></span><br>
+            <span>Expiration Month(encrypted): <strong data-id="encrypted-month"></strong></span>
+        </output>
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- Copyright (c) Robert A. Howell  May, 2023 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Slideshow Widget Test</title>
+    <script src="typescript.js" async></script>
+    <style>
+        .slideshow {
+            border: 3px solid gray;
+            width: 500px;
+        }
+        .card {
+            border: 1px solid purple;
+        }
+        .slide {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Slideshow Widget (Below)</h1><hr>
+    <div class="slideshow">
+        <div class="card slide" style="position:absolute; opacity: 1; transform: translateX(100px)">
+            <h3>Slide1</h3><p>Slide 1 content</p>
+        </div>
+        <div class="card slide" style="position:absolute; opacity: 1; transform: translateX(300px)">
+            <h3>Slide2</h3><p>Slide 2 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide3</h3><p>Slide 3 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide4</h3><p>Slide 4 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide5</h3><p>Slide 5 content</p>
+        </div>
+        <div class="card slide">
+            <h3>Slide6</h3><p>Slide 6 content</p>
+        </div>
+    </div>
+</body>
+</html>

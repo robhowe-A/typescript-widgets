@@ -1,0 +1,7 @@
+{
+    "files": ["draggable.ts"],
+    "compilerOptions": {
+      "noImplicitAny": true,
+      "target": "ES2022"
+    }
+  }
