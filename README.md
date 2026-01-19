@@ -1,4 +1,11 @@
-<!-- Copyright (c) 2026 Robert A. Howell -->
+<!-- 
+Copyright (c) 2026 Robert A. Howell
+Author: Robert A. Howell
+Description: This repository holds folders and files of multiple projects for source code demonstration. The projects are described here and in the repository subfolder README.md files, too. 
+Created_Date: January 2026
+Edited: 2026-01-19
+-->
+
 # Typescript Widgets  
 
 ## Card Carousel  
@@ -136,3 +143,4 @@ A FrontEnd Mentor challenge: it's a web component that displays colloquial advic
 - Build with Next.js framework + TypeScript
 - API
 - HTML and CSS markup
+
