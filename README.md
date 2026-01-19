@@ -6,45 +6,36 @@ Created_Date: January 2026
 Edited: 2026-01-19
 -->
 
-# Typescript Widgets  
-
+# Typescript Widgets
 ## Card Carousel  
-
-**What is it?**
-
-A web component made for www.randomwebbits.com. It's a picture carousel and/or slideshow
+**What is it?**  
+A web component made for www.randomwebbits.com. It's a picture carousel and/or slideshow  
 
 <img src="CardSlideshow.png" alt="A slideshow widget." width="70%">
 
-**What does it do?**
-
-- Interactive due to newly created elements and functions that are not availablle in the original markup
+**What does it do?**  
+- Interactive due to newly created elements and functions that are not available in the original markup
 - JavaScript adds new elements to make the component function as expected
-- Two slides show at a time, one on the left and one on the right
+- Two slides are shown at a time, one on the left and one on the right
 - The 'SlideShow' is a class with members and functions capable of running the slideshow
 
-**Technology?**
-
+**Technology?**  
 - Built with Gulp + TypeScript compiler
 - Javascript async module
 - HTML markup and JavaScript
 
 ## Dictionary Widget  
-
-**What is it?**
-
-It's a search box word entry and definition retrieval program for the browser.
+**What is it?**  
+It's a search box word entry and definition retrieval program for the browser.  
 
 <img src="DictionaryWidget.png" alt="A dictionary widget." width="70%">
 
-**What does it do?**
-
-- Retrieve words from a word dictionary API.
+**What does it do?**  
+- Retrieve words from a word dictionary API
 - Asynchronous word fetch
 - Dynamic markup creation
 
-**Technology?**
-
+**Technology?**  
 - Built with Gulp + TypeScript compiler
 - Javascript async module
 - HTML markup and JavaScript
@@ -88,22 +79,18 @@ wordFetchRequest();
 </details>
 
 ## To-Do List Widget  
-
-**What is it?**
-
-A to-do list in a webpage, made to store to-do items using stored entries
+**What is it?**  
+A to-do list on a webpage, made to store to-do items using stored entries  
 
 <img src="ToDoList.png" alt="A to-do list widget." width="70%">
 
-**What does it do?**
-
+**What does it do?**  
 - Add to-dos using an input form
 - Delete entries if 'complete' checkbox is entered
-- Store to-dos in browser storage --> re-render on page reload
+- Store to-dos in browser storage → re-render on page reload
 - Exportable widget based on classname
 
-**Technology?**
-
+**Technology?**  
 - Built with Gulp + TypeScript compiler
 - Javascript async module
 - HTML markup and JavaScript
@@ -125,22 +112,17 @@ A to-do list in a webpage, made to store to-do items using stored entries
   > ```
 
 ## Advice Generator  
-
-**What is it?**
-
-A FrontEnd Mentor challenge: it's a web component that displays colloquial advice expressions
+**What is it?**  
+A FrontEnd Mentor challenge: it's a web component that displays colloquial advice expressions.  
 
 <img src="AdviceGenerator.png" alt="An advice generator component." width="70%">
 
-**What does it do?**
-
+**What does it do?**  
 - View the optimal layout for the app depending on their device's screen size (in development: phase 1)
 - See hover states for all interactive elements on the page (in development: phase 2)
 - Generate a new piece of advice by clicking the dice icon
 
-**Technology?**
-
+**Technology?**  
 - Build with Next.js framework + TypeScript
 - API
 - HTML and CSS markup
-
