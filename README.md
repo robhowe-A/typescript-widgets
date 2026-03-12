@@ -11,7 +11,7 @@ Edited: 2026-01-19
 **What is it?**  
 A web component made for www.randomwebbits.com. It's a picture carousel and/or slideshow  
 
-<img src="CardSlideshow.png" alt="A slideshow widget." width="70%">
+![A slideshow widget.](CardSlideshow.png)
 
 **What does it do?**  
 - Interactive due to newly created elements and functions that are not available in the original markup
@@ -28,7 +28,7 @@ A web component made for www.randomwebbits.com. It's a picture carousel and/or s
 **What is it?**  
 It's a search box word entry and definition retrieval program for the browser.  
 
-<img src="DictionaryWidget.png" alt="A dictionary widget." width="70%">
+![A dictionary widget.](DictionaryWidget.png)
 
 **What does it do?**  
 - Retrieve words from a word dictionary API
@@ -82,7 +82,7 @@ wordFetchRequest();
 **What is it?**  
 A to-do list on a webpage, made to store to-do items using stored entries  
 
-<img src="ToDoList.png" alt="A to-do list widget." width="70%">
+![A to-do list widget.](ToDoList.png)
 
 **What does it do?**  
 - Add to-dos using an input form
@@ -115,7 +115,7 @@ A to-do list on a webpage, made to store to-do items using stored entries
 **What is it?**  
 A FrontEnd Mentor challenge: it's a web component that displays colloquial advice expressions.  
 
-<img src="AdviceGenerator.png" alt="An advice generator component." width="70%">
+![An advice generator component](AdviceGenerator.png)
 
 **What does it do?**  
 - View the optimal layout for the app depending on their device's screen size (in development: phase 1)
@@ -126,3 +126,4 @@ A FrontEnd Mentor challenge: it's a web component that displays colloquial advic
 - Build with Next.js framework + TypeScript
 - API
 - HTML and CSS markup
+
